@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/master-items', [App\Http\Controllers\MasterItemsController::class, 'index']);
+Route::get('/master-items', [App\Http\Controllers\MasterItemsController::class, 'index'])->name('master-items.index');
 Route::get('/master-items/search', [App\Http\Controllers\MasterItemsController::class, 'search']);
 Route::get('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterItemsController::class, 'formView']);
 Route::post('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterItemsController::class, 'formSubmit']);
@@ -29,5 +30,11 @@ Route::post('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterIte
 Route::get('/master-items/view/{kode}', [App\Http\Controllers\MasterItemsController::class, 'singleView']);
 Route::get('/master-items/delete/{id}', [App\Http\Controllers\MasterItemsController::class, 'delete']);
 
-
 Route::get('/master-items/update-random-data', [App\Http\Controllers\MasterItemsController::class, 'updateRandomData']);
+
+Route::get('/kategori-items', [App\Http\Controllers\KategoriItemsController::class, 'index'])->name('kategori-items.index');
+Route::get('/kategori-items/search', [App\Http\Controllers\KategoriItemsController::class, 'search']);
+Route::get('/kategori-items/form/{method}/{id?}', [App\Http\Controllers\KategoriItemsController::class, 'formView']);
+Route::post('/kategori-items/form/{method}/{id?}', [App\Http\Controllers\KategoriItemsController::class, 'formSubmit']);
+Route::get('/kategori-items/view/{kode}', [App\Http\Controllers\KategoriItemsController::class, 'singleView']);
+
